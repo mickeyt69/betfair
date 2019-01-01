@@ -10,7 +10,7 @@ elo.A <- c(1500, 1500)
 elo.B <- c(1500, 1500)
 elo.prob(elo.A, elo.B)
 
-ATP_matches$wins.A <- ATP_matches$Winner_Games_Won>ATP_matches$Loser_Games_Won
+ATP_matches$wins.A <- if_else(ATP_matches$Winner_Sets_Won>ATP_matches$Loser_Sets_Won,1,0)
 K<-ATP_matches$K
 score<-elo.run(wins.A ~ Winner + Loser, data = ATP_matches, k = K)
 
